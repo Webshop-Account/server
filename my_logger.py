@@ -10,9 +10,9 @@ class LogConfig(BaseModel):
     LOG_LEVEL: str = "DEBUG"
 
     # Logging config
-    version = 1
-    disable_existing_loggers = False
-    formatters = {
+    version: int = 1
+    disable_existing_loggers: bool = False
+    formatters: dict = {
         "default": {
             "()": "uvicorn.logging.ColourizedFormatter",
             "fmt": LOG_FORMAT,
@@ -20,13 +20,13 @@ class LogConfig(BaseModel):
             "use_colors": True
         },
     }
-    handlers = {
+    handlers: dict = {
         "default": {
             "formatter": "default",
             "class": "logging.StreamHandler",
             "stream": "ext://sys.stdout",
         },
     }
-    loggers = {
+    loggers: dict = {
         LOGGER_NAME: {"handlers": ["default"], "level": LOG_LEVEL},
     }
