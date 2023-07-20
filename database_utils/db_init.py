@@ -3,7 +3,9 @@ from sqlite3 import Error
 
 
 def connect_db() -> sqlite3.Connection:
-    conn = None
+    """ create a database connection to the SQLite database specified by db_file
+        :return: Connection object or None
+    """
     try:
         conn = sqlite3.connect("../db/basa.db")
         return conn
@@ -12,4 +14,11 @@ def connect_db() -> sqlite3.Connection:
 
 
 def create_tables() -> None:
-    pass
+    sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS projects (
+                                            id integer PRIMARY KEY,
+                                            name text NOT NULL,
+                                            begin_date text,
+                                            end_date text
+                                        ); """
+
+
