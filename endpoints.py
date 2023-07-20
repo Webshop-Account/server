@@ -7,6 +7,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from my_logger import LogConfig
 
+
 dictConfig(LogConfig().model_dump())
 logger = logging.getLogger("mylogger")
 
